@@ -8,7 +8,26 @@ LABEL org.opencontainers.image.vendor="Ministry of Justice" \
       org.opencontainers.image.description="Minimal Ubuntu image with networking diagnostic tools installed" \
       org.opencontainers.image.url="https://github.com/ministryofjustice/analytical-platform-network-diagnostics"
 
-USER analyticalplatform
+ENV CONTAINER_GID="1000" \
+    CONTAINER_UID="1000" \
+    CONTAINER_USER="analyticalplatform" \
+    CONTAINER_GROUP="analyticalplatform"
+
+# User Configuration
+RUN <<EOF
+userdel --remove --force ubuntu
+
+groupadd \
+  --gid ${CONTAINER_GID} \
+  ${CONTAINER_GROUP}
+
+useradd \
+  --uid ${CONTAINER_UID} \
+  --gid ${CONTAINER_GROUP} \
+  --create-home \
+  --shell /bin/bash \
+  ${CONTAINER_USER}
+EOF
 
 # Install networking diagnostic tools
 RUN <<EOF
