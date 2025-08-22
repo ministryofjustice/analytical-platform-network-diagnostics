@@ -41,5 +41,5 @@ apt-get install --yes \
 apt-get clean --yes
 EOF
 
- WORKDIR /home/${CONTAINER_USER}
+WORKDIR /home/${CONTAINER_USER}
 USER ${CONTAINER_UID}:${CONTAINER_GID}
