@@ -6,6 +6,20 @@ commandTests:
     command: "grep"
     args: ["DISTRIB_RELEASE", "/etc/lsb-release"]
     expectedOutput: ["DISTRIB_RELEASE=24.04"]
+  
+  - name: "whoami"
+    command: "whoami"
+    expectedOutput: ["analyticalplatform"]
+
+  - name: "user"
+    command: "id"
+    args: ["--user", "analyticalplatform"]
+    expectedOutput: ["1001"]
+
+  - name: "group"
+    command: "id"
+    args: ["--groups", "analyticalplatform"]
+    expectedOutput: ["1001"]
 
   - name: "curl"
     command: "bash"
