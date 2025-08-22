@@ -1,0 +1,20 @@
+---
+name: 🔖 Container Release
+
+on:
+  push:
+    tags:
+      - "*"
+
+permissions: {}
+
+jobs:
+  container-release:
+    name: Container Release
+    permissions:
+      actions: read
+      attestations: write
+      contents: write
+      id-token: write
+      packages: write
+    uses: ministryofjustice/analytical-platform-github-actions/.github/workflows/reusable-container-release.yml@5821adc81f085cdaf9d32e701cc75d2633e6dbc7 # v4.7.2
