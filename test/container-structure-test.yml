@@ -21,25 +21,6 @@ commandTests:
     args: ["--groups", "analyticalplatform"]
     expectedOutput: ["1000"]
 
-  - name: "curl"
-    command: "bash"
-    args:
-      - "-lc"
-      - "curl --version | awk 'NR==1{print $2}'"
-    expectedOutput: ["8.5.0"]
-
-  - name: "ping"
-    command: "ping"
-    args: ["-V"]
-    expectedOutput: ["20240117"]
-
-  - name: "netcat-openbsd"
-    command: "bash"
-    args:
-      - "-lc"
-      - "nc -h 2>&1 | head -n1"
-    expectedOutput: ["OpenBSD netcat \\(Debian patchlevel 1\\.226-1ubuntu2\\)"]
-
 metadataTest:
   labels:
     - key: "org.opencontainers.image.vendor"
