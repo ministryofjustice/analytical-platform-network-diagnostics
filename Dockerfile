@@ -8,6 +8,7 @@ LABEL org.opencontainers.image.vendor="Ministry of Justice" \
       org.opencontainers.image.description="Minimal Ubuntu image with networking diagnostic tools installed" \
       org.opencontainers.image.url="https://github.com/ministryofjustice/analytical-platform-network-diagnostics"
 
+USER root
 
 # Install networking diagnostic tools
 RUN <<EOF
