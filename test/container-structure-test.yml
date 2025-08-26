@@ -1,0 +1,39 @@
+---
+schemaVersion: 2.0.0
+
+commandTests:
+  - name: "ubuntu"
+    command: "grep"
+    args: ["DISTRIB_RELEASE", "/etc/lsb-release"]
+    expectedOutput: ["DISTRIB_RELEASE=24.04"]
+
+  - name: "whoami"
+    command: "whoami"
+    expectedOutput: ["analyticalplatform"]
+
+  - name: "user"
+    command: "id"
+    args: ["--user", "analyticalplatform"]
+    expectedOutput: ["1000"]
+
+  - name: "group"
+    command: "id"
+    args: ["--groups", "analyticalplatform"]
+    expectedOutput: ["1000"]
+
+metadataTest:
+  labels:
+    - key: "org.opencontainers.image.vendor"
+      value: "Ministry of Justice"
+
+    - key: "org.opencontainers.image.authors"
+      value: "Analytical Platform (analytical-platform@digital.justice.gov.uk)"
+
+    - key: "org.opencontainers.image.title"
+      value: "Analytical Platform Network Diagnostics"
+
+    - key: "org.opencontainers.image.description"
+      value: "Minimal Ubuntu image with networking diagnostic tools installed"
+
+    - key: "org.opencontainers.image.url"
+      value: "https://github.com/ministryofjustice/analytical-platform-network-diagnostics"
