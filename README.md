@@ -1,4 +1,4 @@
-# Ministry of Justice Template Repository
+# Analytical Platform Network Diagnostics
 
 [![Ministry of Justice Repository Compliance Badge](https://github-community.service.justice.gov.uk/repository-standards/api/analytical-platform-network-diagnostics/badge)](https://github-community.service.justice.gov.uk/repository-standards/analytical-platform-network-diagnostics)
 
