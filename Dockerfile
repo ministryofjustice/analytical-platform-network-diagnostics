@@ -33,7 +33,7 @@ EOF
 RUN <<EOF
 apt-get update --yes
 
-apt-get install --yes \
+apt-get install --yes --no-install-recommends \
   "curl=8.5.0-2ubuntu10.6" \
   "iputils-ping=3:20240117-1ubuntu0.1" \
   "netcat-openbsd=1.226-1ubuntu2"
