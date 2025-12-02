@@ -1,0 +1,5 @@
+oracledb==3.4.1
+dataengineeringutils3==1.4.3
+ssm-parameter-store==19.11.0
+gluejobutils==1.0.4
+sqlalchemy==2.0.44

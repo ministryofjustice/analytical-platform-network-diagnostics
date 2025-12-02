@@ -29,7 +29,7 @@ useradd \
   ${CONTAINER_USER}
 EOF
 
-# Install networking diagnostic tools
+# Install networking diagnostic tools and Python
 RUN <<EOF
 apt-get update --yes
 
@@ -37,10 +37,16 @@ apt-get install --yes \
   "curl=8.5.0-2ubuntu10.6" \
   "iputils-ping=3:20240117-1ubuntu0.1" \
   "netcat-openbsd=1.226-1ubuntu2" \
-  "traceroute=1:2.1.5-1"
+  "traceroute=1:2.1.5-1" \
+  "python3=3.12.3-0ubuntu2.1" \
+  "python3-pip=24.0+dfsg-1ubuntu1.3"
 
 apt-get clean --yes
 EOF
+
+# Install Python dependencies
+COPY requirements.txt /tmp/requirements.txt
+RUN pip3 install --no-cache-dir --break-system-packages -r /tmp/requirements.txt
 
 WORKDIR /home/${CONTAINER_USER}
 USER ${CONTAINER_UID}:${CONTAINER_GID}
