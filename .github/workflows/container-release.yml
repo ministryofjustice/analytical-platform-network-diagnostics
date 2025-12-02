@@ -1,10 +1,14 @@
 ---
 name: 🔖 Container Release
 
+# on:
+#   push:
+#     tags:
+#       - "*"
 on:
-  push:
-    tags:
-      - "*"
+  pull_request:
+    branches:
+      - main
 
 permissions: {}
 
