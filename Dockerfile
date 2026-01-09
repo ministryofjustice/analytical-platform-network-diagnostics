@@ -32,7 +32,7 @@ EOF
 # Install networking diagnostic tools
 RUN <<EOF
 apt-get update --yes
-apt-get upgrade --yes \
+apt-get upgrade --yes
 apt-get install --yes \
   "curl=8.5.0-2ubuntu10.6" \
   "iputils-ping=3:20240117-1ubuntu0.1" \
