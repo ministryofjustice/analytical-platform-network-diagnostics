@@ -35,6 +35,7 @@ apt-get update --yes
 
 apt-get install --yes \
   "curl=8.5.0-2ubuntu10.6" \
+  "gpgv=2.4.4-2ubuntu17.4" \
   "iputils-ping=3:20240117-1ubuntu0.1" \
   "netcat-openbsd=1.226-1ubuntu2" \
   "traceroute=1:2.1.5-1"
