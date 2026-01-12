@@ -4,6 +4,3 @@ AVD-DS-0029
 
 ## Trivy: Healthchecks applied downstream
 AVD-DS-0026
-
-# Ubuntu dependency gpgv
-CVE-2025-68973
