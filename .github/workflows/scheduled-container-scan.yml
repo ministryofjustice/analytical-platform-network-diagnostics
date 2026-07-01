@@ -6,7 +6,7 @@ on:
     - cron: "0 9 * * 1-5" # Every weekday at 9AM UTC
   workflow_dispatch:
 
-permissions: { }
+permissions: {}
 
 jobs:
   scheduled-container-scan:
