@@ -1,6 +1,6 @@
 #checkov:skip=CKV_DOCKER_2: HEALTHCHECK not required - Health checks are implemented downstream of this image
 
-FROM public.ecr.aws/ubuntu/ubuntu:24.04@sha256:ef59d9e82939bbce08973bdffb8761b025f75369fb7d2882cdc4938b5a9e992e
+FROM public.ecr.aws/ubuntu/ubuntu:26.04@sha256:b5d8146c52b57381de84f4cbbf47c2f637e0f4017fe5a4a54f71251bde83fafa
 
 LABEL org.opencontainers.image.vendor="Ministry of Justice" \
       org.opencontainers.image.authors="Analytical Platform (analytical-platform@digital.justice.gov.uk)" \
@@ -34,11 +34,11 @@ RUN <<EOF
 apt-get update --yes
 
 apt-get install --yes \
-  "curl=8.5.0-2ubuntu10.6" \
-  "gpgv=2.4.4-2ubuntu17.4" \
-  "iputils-ping=3:20240117-1ubuntu0.1" \
-  "netcat-openbsd=1.226-1ubuntu2" \
-  "traceroute=1:2.1.5-1"
+  "curl=8.18.0-1ubuntu2.2" \
+  "gpgv=2.4.8-4ubuntu3" \
+  "iputils-ping=3:20250605-1ubuntu1" \
+  "netcat-openbsd=1.234-1" \
+  "traceroute=1:2.1.6-1build1"
 
 apt-get clean --yes
 EOF
