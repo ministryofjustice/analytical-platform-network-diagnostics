@@ -34,7 +34,7 @@ RUN <<EOF
 apt-get update --yes
 
 apt-get install --yes \
-  "curl=8.18.0-1ubuntu2.2" \
+  "curl=8.18.0-1ubuntu2.3" \
   "gpgv=2.4.8-4ubuntu3" \
   "iputils-ping=3:20250605-1ubuntu1" \
   "netcat-openbsd=1.234-1" \
