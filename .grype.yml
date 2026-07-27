@@ -1,0 +1,53 @@
+---
+# Grype configuration for container vulnerability scanning.
+# These vulnerabilities are reported from /usr/bin/pebble bundled in the
+# upstream Ubuntu base image and are not directly patchable in this repository.
+
+ignore:
+  - vulnerability: GO-2026-4918
+    package:
+      name: golang.org/x/net
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+
+  - vulnerability: GO-2026-5037
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+
+  - vulnerability: CVE-2026-27145
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+
+  - vulnerability: CVE-2026-42504
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+
+  - vulnerability: GO-2026-5038
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+
+  - vulnerability: GO-2026-5026
+    package:
+      name: golang.org/x/net
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+
+  - vulnerability: CVE-2026-39822
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+
+  - vulnerability: GO-2026-4970
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
