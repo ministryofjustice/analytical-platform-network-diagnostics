@@ -48,7 +48,7 @@ The [Renovate config](./.github/renovate.json) also disables organisation-level 
 If you need to manually get latest versions of the APT packages, they can be obtained by running the following
 
 ```bash
-docker run -it --rm --platform linux/amd64 public.ecr.aws/ubuntu/ubuntu:24.04
+docker run -it --rm --platform linux/amd64 public.ecr.aws/ubuntu/ubuntu:26.04
 
 apt-get update
 

@@ -38,6 +38,9 @@ apt-get install --yes \
   "gpgv=2.4.8-4ubuntu3" \
   "gzip=1.14-1~exp2ubuntu1.1" \
   "iputils-ping=3:20250605-1ubuntu1" \
+  "libc-bin=2.43-2ubuntu2.3" \
+  "libc-gconv-modules-extra=2.43-2ubuntu2.3" \
+  "libc6=2.43-2ubuntu2.3" \
   "netcat-openbsd=1.234-1" \
   "traceroute=1:2.1.6-1build1"
 
