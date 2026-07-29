@@ -51,3 +51,9 @@ ignore:
       name: stdlib
       location: /usr/bin/pebble
     reason: "Upstream Pebble in pinned Ubuntu base image."
+
+  - vulnerability: GO-2026-5942
+    package:
+      name: golang.org/x/net
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
