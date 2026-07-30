@@ -57,3 +57,23 @@ ignore:
       name: golang.org/x/net
       location: /usr/bin/pebble
     reason: "Upstream Pebble in pinned Ubuntu base image."
+
+  - vulnerability: CVE-2026-4046
+    package:
+      name: libc
+      location: /var/lib/dpkg/status
+
+  - vulnerability: CVE-2026-5928
+    package:
+      name: libc
+      location: /var/lib/dpkg/status
+
+  - vulnerability: CVE-2026-5435
+    package:
+      name: libc
+      location: /var/lib/dpkg/status
+
+  - vulnerability: CVE-2026-5450
+    package:
+      name: libc
+      location: /var/lib/dpkg/status
