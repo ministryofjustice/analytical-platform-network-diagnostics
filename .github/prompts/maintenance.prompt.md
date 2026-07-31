@@ -5,14 +5,16 @@ tools: ["search/codebase", "search", "edit/editFiles", "execute/runInTerminal", 
 
 # Maintenance
 
-Perform maintenance on the `Dockerfile`. Update the Ubuntu base image digest and the pinned APT package versions together, and open a single pull request.
+Perform maintenance on the `Dockerfile`. Update the base image digest and the pinned APT package versions together, and open a single pull request. Read the current base image, tag, and package list from the `Dockerfile`; do not assume a specific Ubuntu version or package set.
 
 ## Objective
 
-In one pull request:
+In one pull request, for the base image and packages already declared in the `Dockerfile`:
 
-1. Update the pinned digest for `public.ecr.aws/ubuntu/ubuntu:24.04` to the latest published digest for `linux/amd64`.
-2. Refresh the pinned APT package versions to the latest available for Ubuntu 24.04, preserving the current package list.
+1. Update the pinned base image digest to the latest published digest for the image and tag in the `FROM` line (for `linux/amd64`).
+2. Refresh the pinned APT package versions to the latest available for that base image, preserving the current package list.
+
+Do not assume a specific Ubuntu version or package set. Always read the current values from the `Dockerfile`.
 
 ## Required Outcome
 
@@ -30,53 +32,44 @@ In one pull request:
 git checkout -b "chore/maintenance-dockerfile-$(date +%Y%m%d-%H%M%S)"
 ```
 
-2. Update the Ubuntu base image digest.
+2. Update the base image digest.
 
-- Pull the target image for `linux/amd64`.
+- Read the base image reference (`<image>:<tag>`) from the `FROM` line in `Dockerfile`. Use whatever image and tag are currently pinned; do not assume a specific Ubuntu version.
+- Pull that exact image for `linux/amd64`.
 
 ```bash
-docker pull --platform linux/amd64 public.ecr.aws/ubuntu/ubuntu:24.04
+IMAGE="$(grep -oP '(?<=^FROM )[^@[:space:]]+' Dockerfile)"
+docker pull --platform linux/amd64 "$IMAGE"
 ```
 
 - Retrieve the current repo digest.
 
 ```bash
-docker image inspect --format='{{ index .RepoDigests 0 }}' public.ecr.aws/ubuntu/ubuntu:24.04
+docker image inspect --format='{{ index .RepoDigests 0 }}' "$IMAGE"
 ```
 
-- Extract the `sha256:...` value and update the `FROM` line in `Dockerfile`.
+- Update the `@sha256:...` digest on the `FROM` line to the new value, keeping the image and tag unchanged.
 
 3. Update the pinned APT package versions.
 
-- Start a temporary Ubuntu 24.04 container using the same base image.
+- Read the list of pinned packages from the `apt-get install` block in `Dockerfile`. Use exactly that set of packages; do not add or remove any.
+- Start a temporary container using the same base image and check the candidate versions for those packages.
 
 ```bash
-docker run -it --rm --platform linux/amd64 public.ecr.aws/ubuntu/ubuntu:24.04
+docker run --rm --platform linux/amd64 "$IMAGE" \
+  bash -c "apt-get update && apt-cache policy <packages-from-dockerfile>"
 ```
 
-- In the container, check package candidates.
+- Update each pinned version in `Dockerfile` to the reported candidate, preserving every package currently listed.
 
-```bash
-apt-get update
-apt-cache policy curl gpgv iputils-ping netcat-openbsd traceroute
-```
-
-- Update the pinned versions in `Dockerfile` for:
-
-  - `curl`
-  - `gpgv`
-  - `iputils-ping`
-  - `netcat-openbsd`
-  - `traceroute`
-
-4. Exit the container.
+4. Confirm the `Dockerfile` still lists the same packages and the same image and tag as before (only digest and versions should differ).
 
 5. Commit the change to `Dockerfile` using [Conventional Commits](https://www.conventionalcommits.org/) (`build` type).
 
 6. Push the branch and open the pull request with the GitHub CLI.
 
 - The `git commit`, `git push`, and `gh` steps need the local Git/GitHub credentials and network access. When the terminal is sandboxed these are hidden, so run these steps with the required access (outside the sandbox) rather than stopping. A sandboxed `gh auth status` may report "not logged in" even when the terminal is authenticated; do not treat that as a blocker.
-- Set an explicit PR title: a [Conventional Commits](https://www.conventionalcommits.org/) `build:` summary that matches the commit (for example, `build: update ubuntu base image digest and curl package version`). Do not use `gh pr create --fill`, which derives the title from the branch name.
+- Set an explicit PR title: a [Conventional Commits](https://www.conventionalcommits.org/) `build:` summary that matches the commit (for example, `build: update base image digest and apt package versions`). Do not use `gh pr create --fill`, which derives the title from the branch name.
 - Write the PR description to a temporary file and pass it with `--body-file` to avoid shell-escaping issues. Use Markdown, for example:
 
   ```markdown
@@ -84,9 +77,9 @@ apt-cache policy curl gpgv iputils-ping netcat-openbsd traceroute
 
   Updates the `Dockerfile` build dependencies.
 
-  ### Ubuntu base image
+  ### Base image
 
-  - Digest: `<old-sha256>` -> `<new-sha256>` (tag remains `24.04`)
+  - `<image>:<tag>` digest: `<old-sha256>` -> `<new-sha256>` (image and tag unchanged)
 
   ### APT packages
 
@@ -112,9 +105,9 @@ Building and testing the image is handled by CI/CD, so it is not part of this ru
 
 ## Guardrails
 
-- Keep the base image repository and tag unchanged (`public.ecr.aws/ubuntu/ubuntu:24.04`).
+- Keep the base image repository and tag unchanged; derive them from the existing `FROM` line and only update the digest. Do not change the Ubuntu version.
 - Keep platform assumption aligned to `linux/amd64`.
-- Do not add or remove packages unless explicitly requested.
+- Do not add or remove packages. Update exactly the packages already pinned in the `Dockerfile`.
 - Keep all package installs pinned to explicit versions.
 - Deliver both updates in the same branch and pull request.
 - Use [Conventional Commits](https://www.conventionalcommits.org/) for both the commit message and the PR title (use the `build` type).
