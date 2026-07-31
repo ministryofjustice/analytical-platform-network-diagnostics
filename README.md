@@ -44,8 +44,6 @@ docker image inspect --format='{{ index .RepoDigests 0 }}' public.ecr.aws/ubuntu
 
 ### Base APT Packages
 
-The APT packages installed in the image are pinned to explicit versions in the [Dockerfile](./Dockerfile) and are updated manually. See the [`/maintenance`](.github/prompts/maintenance.prompt.md) prompt for the runbook.
-
 To get the latest available versions of the APT packages, run the following
 
 ```bash
