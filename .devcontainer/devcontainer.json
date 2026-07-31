@@ -6,7 +6,7 @@
     "ghcr.io/devcontainers/features/github-cli:": {},
     "ghcr.io/ministryofjustice/devcontainer-feature/apm:": {},
     "ghcr.io/ministryofjustice/devcontainer-feature/container-structure-test:1": {},
-    "ghcr.io/ministryofjustice/devcontainer-feature/static-analysis:1": {}
+    "ghcr.io/ministryofjustice/devcontainer-feature/static-analysis:2": {}
   },
   "customizations": {
     "vscode": {
