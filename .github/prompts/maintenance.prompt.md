@@ -1,11 +1,11 @@
 ---
-description: "Update the Ubuntu base image digest and pinned APT package versions in the Dockerfile as a single pull request"
+description: "Update the Ubuntu base image digest and pinned APT package versions in the Dockerfile and open a pull request"
 tools: ["search/codebase", "search", "edit/editFiles", "execute/runInTerminal", "execute/getTerminalOutput"]
 ---
 
 # Maintenance
 
-Perform maintenance on the `Dockerfile`. Update the Ubuntu base image digest and the pinned APT package versions together, and deliver them as a single pull request.
+Perform maintenance on the `Dockerfile`. Update the Ubuntu base image digest and the pinned APT package versions together, and open a single pull request.
 
 ## Objective
 
@@ -19,14 +19,15 @@ In one pull request:
 1. Create a single maintenance branch.
 2. Update the Ubuntu base image digest in the `FROM` line.
 3. Update the pinned APT package versions.
-4. Prepare one PR-ready change summary covering both updates.
+4. Commit the changes using Conventional Commits.
+5. Push the branch and open a pull request with a clear title and description.
 
 ## Execution Steps
 
 1. Create a maintenance branch.
 
 ```bash
-git checkout -b chore/maintenance-dockerfile-<yyyymmdd>
+git checkout -b "chore/maintenance-dockerfile-$(date +%Y%m%d-%H%M%S)"
 ```
 
 2. Update the Ubuntu base image digest.
@@ -70,13 +71,44 @@ apt-cache policy curl gpgv iputils-ping netcat-openbsd traceroute
 
 4. Exit the container.
 
-5. Prepare a single PR summarising both updates:
+5. Commit the change to `Dockerfile` using [Conventional Commits](https://www.conventionalcommits.org/) (`build` type).
 
-- Old digest and new digest (confirm tag remains `24.04`).
-- Package versions before and after.
-- Any package that could not be upgraded and why.
+6. Push the branch and open the pull request with the GitHub CLI.
 
-Building and testing the image is handled by CI/CD, so it is not required as part of this runbook.
+- The `git commit`, `git push`, and `gh` steps need the local Git/GitHub credentials and network access. When the terminal is sandboxed these are hidden, so run these steps with the required access (outside the sandbox) rather than stopping. A sandboxed `gh auth status` may report "not logged in" even when the terminal is authenticated; do not treat that as a blocker.
+- Set an explicit PR title: a [Conventional Commits](https://www.conventionalcommits.org/) `build:` summary that matches the commit (for example, `build: update ubuntu base image digest and curl package version`). Do not use `gh pr create --fill`, which derives the title from the branch name.
+- Write the PR description to a temporary file and pass it with `--body-file` to avoid shell-escaping issues. Use Markdown, for example:
+
+  ```markdown
+  ## Summary
+
+  Updates the `Dockerfile` build dependencies.
+
+  ### Ubuntu base image
+
+  - Digest: `<old-sha256>` -> `<new-sha256>` (tag remains `24.04`)
+
+  ### APT packages
+
+  | Package | Before | After |
+  | --- | --- | --- |
+  | curl | `<old>` | `<new>` |
+
+  Only list packages that changed. Note any that could not be upgraded and why.
+
+  Building and testing is handled by CI/CD.
+  ```
+
+- Create the pull request:
+
+  ```bash
+  git push -u origin <branch>
+  gh pr create --base main --head <branch> --title "<title>" --body-file <body-file>
+  ```
+
+- Report the URL of the created pull request.
+
+Building and testing the image is handled by CI/CD, so it is not part of this runbook.
 
 ## Guardrails
 
@@ -85,3 +117,4 @@ Building and testing the image is handled by CI/CD, so it is not required as par
 - Do not add or remove packages unless explicitly requested.
 - Keep all package installs pinned to explicit versions.
 - Deliver both updates in the same branch and pull request.
+- Use [Conventional Commits](https://www.conventionalcommits.org/) for both the commit message and the PR title (use the `build` type).
