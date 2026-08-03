@@ -39,8 +39,10 @@ apt-get install --yes \
   "gzip=1.14-1~exp2ubuntu1.1" \
   "iputils-ping=3:20250605-1ubuntu1" \
   "netcat-openbsd=1.234-1" \
-  "traceroute=1:2.1.6-1build1"
-
+  "traceroute=1:2.1.6-1build1" \
+  "libc6=2.43-2ubuntu2.3" \
+  "libc-bin=2.43-2ubuntu2.3" \
+  "libc-gconv-modules-extra=2.43-2ubuntu2.3"
 apt-get clean --yes
 EOF
 
