@@ -6,11 +6,12 @@ on:
     branches:
       - main
 
-permissions: {}
+permissions: { }
 
 jobs:
   container-test:
     name: Container Test
     permissions:
       contents: read
+    # yamllint disable-line rule:line-length
     uses: ministryofjustice/analytical-platform-github-actions/.github/workflows/reusable-container-test.yml@72f9c303ec3becced97e2d4472122fee783ff4a4 # v8.0.1
