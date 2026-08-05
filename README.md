@@ -30,6 +30,8 @@ make run
 
 ## Managing Software Versions
 
+This repository includes a Copilot prompt for maintenance in [`.github/prompts/`](.github/prompts/). To run it, open Copilot Chat in Visual Studio Code and type `/maintenance`. The prompt updates the Ubuntu base image digest and the pinned APT package versions in the [Dockerfile](./Dockerfile) and prepares a single pull request.
+
 ### Ubuntu
 
 Dependabot is configured to do this in [`.github/dependabot.yml`](.github/dependabot.yml), but if you need to get the digest, do the following
@@ -42,15 +44,12 @@ docker image inspect --format='{{ index .RepoDigests 0 }}' public.ecr.aws/ubuntu
 
 ### Base APT Packages
 
-The latest versions of the APT packages are managed by [Renovate](https://docs.renovatebot.com/) via the [Renovate `deb` data source](https://docs.renovatebot.com/modules/datasource/deb/) which matches packages through `regex` (regular expression) matching the `# renovate` comments in the [Dockerfile](./Dockerfile).
-The [Renovate config](./.github/renovate.json) also disables organisation-level settings for Renovate, so it can compliment rather than conflict with Dependabot.
-
-If you need to manually get latest versions of the APT packages, they can be obtained by running the following
+To get the latest available versions of the APT packages, run the following
 
 ```bash
 docker run -it --rm --platform linux/amd64 public.ecr.aws/ubuntu/ubuntu:24.04
 
 apt-get update
 
-apt-cache policy curl iputils-ping netcat-openbsd
+apt-cache policy curl gpgv iputils-ping netcat-openbsd traceroute
 ```
