@@ -78,6 +78,7 @@ docker run --rm --platform linux/amd64 "$IMAGE" \
 - The `git commit`, `git push`, and `gh` steps need the local Git/GitHub credentials and network access. When the terminal is sandboxed these are hidden, so run these steps with the required access (outside the sandbox) rather than stopping. A sandboxed `gh auth status` may report "not logged in" even when the terminal is authenticated; do not treat that as a blocker.
 - Set an explicit PR title: a [Conventional Commits](https://www.conventionalcommits.org/) `build:` summary that matches the commit (for example, `build: update base image digest and apt package versions`). Do not use `gh pr create --fill`, which derives the title from the branch name.
 - Write the PR description to a temporary file and pass it with `--body-file` to avoid shell-escaping issues. Use Markdown, for example:
+- In the PR description, wrap all SHA values (for example `sha256:...`) in backticks, including both old and new digest values in comparisons.
 
   ```markdown
   ## Summary
@@ -86,7 +87,7 @@ docker run --rm --platform linux/amd64 "$IMAGE" \
 
   ### Base image
 
-  - `<image>:<tag>` digest: `<old-sha256>` -> `<new-sha256>` (image and tag unchanged)
+  - `<image>:<tag>` digest: `sha256:<old-sha256>` -> `sha256:<new-sha256>` (image and tag unchanged)
 
   ### APT packages
 
