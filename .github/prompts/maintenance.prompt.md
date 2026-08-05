@@ -90,11 +90,15 @@ docker run --rm --platform linux/amd64 "$IMAGE" \
 
   ### APT packages
 
+  Include this section only when one or more package versions changed.
+
   | Package | Before  | After   |
   | ------- | ------- | ------- |
   | curl    | `<old>` | `<new>` |
 
-  Only list packages that changed. Note any that could not be upgraded and why.
+  If no package versions changed, omit the entire `### APT packages` section (including the table) and add a single line in `## Summary`: `APT package versions already up to date.`
+
+  Note any packages that could not be upgraded and why.
 
   Building and testing is handled by CI/CD.
   ```
