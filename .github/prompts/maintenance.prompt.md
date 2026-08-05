@@ -49,7 +49,7 @@ IMAGE="$(grep -oP '(?<=^FROM )[^@[:space:]]+' Dockerfile)"
 docker pull --platform linux/amd64 "$IMAGE"
 ```
 
-- Retrieve the current repo digest.
+- Retrieve the current repository digest.
 
 ```bash
 docker image inspect --format='{{ index .RepoDigests 0 }}' "$IMAGE"
