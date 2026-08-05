@@ -1,6 +1,13 @@
 ---
 description: "Update the Ubuntu base image digest and pinned APT package versions in the Dockerfile and open a pull request"
-tools: ["search/codebase", "search", "edit/editFiles", "execute/runInTerminal", "execute/getTerminalOutput"]
+tools:
+  [
+    "search/codebase",
+    "search",
+    "edit/editFiles",
+    "execute/runInTerminal",
+    "execute/getTerminalOutput",
+  ]
 ---
 
 # Maintenance
@@ -42,7 +49,7 @@ IMAGE="$(grep -oP '(?<=^FROM )[^@[:space:]]+' Dockerfile)"
 docker pull --platform linux/amd64 "$IMAGE"
 ```
 
-- Retrieve the current repo digest.
+- Retrieve the current repository digest.
 
 ```bash
 docker image inspect --format='{{ index .RepoDigests 0 }}' "$IMAGE"
@@ -83,9 +90,9 @@ docker run --rm --platform linux/amd64 "$IMAGE" \
 
   ### APT packages
 
-  | Package | Before | After |
-  | --- | --- | --- |
-  | curl | `<old>` | `<new>` |
+  | Package | Before  | After   |
+  | ------- | ------- | ------- |
+  | curl    | `<old>` | `<new>` |
 
   Only list packages that changed. Note any that could not be upgraded and why.
 
