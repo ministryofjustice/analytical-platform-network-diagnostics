@@ -69,4 +69,3 @@ ignore:
       name: stdlib
       location: /usr/bin/pebble
     reason: "Upstream Pebble in pinned Ubuntu base image."
-
