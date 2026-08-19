@@ -1,12 +1,12 @@
 lockfile_version: '1'
-generated_at: '2026-08-19T20:41:00.486018+00:00'
+generated_at: '2026-08-19T20:42:54.549752+00:00'
 apm_version: 0.28.0
 dependencies:
 - repo_url: ministryofjustice/ai-toolkit
   name: universal
   host: github.com
-  resolved_commit: deb9cfa3a9130112882a71dfdbe4b00e9e54d235
-  resolved_ref: deb9cfa3a9130112882a71dfdbe4b00e9e54d235
+  resolved_commit: 69e66f8ce36ead7125ab5d93840a8a16aa87d883
+  resolved_ref: main
   version: 1.0.0
   virtual_path: toolkits/universal
   is_virtual: true
