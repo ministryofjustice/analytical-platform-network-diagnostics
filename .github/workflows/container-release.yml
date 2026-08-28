@@ -5,6 +5,7 @@ name: Container Release
   push:
     tags:
       - "*"
+  workflow_dispatch: {}
 
 permissions: {}
 
@@ -16,6 +17,6 @@ jobs:
       contents: read
       id-token: write
       packages: write
-    uses: ministryofjustice/data-platform-github-actions/.github/workflows/container-release.yml@f48cf9157c3eae2dcecf5173a474577aabcd37a5 # v4.1.2
+    uses: ministryofjustice/data-platform-github-actions/.github/workflows/container-release.yml@sbom_size # v4.1.2
     with:
       containerfile-path: Dockerfile
