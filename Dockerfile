@@ -1,6 +1,6 @@
 #checkov:skip=CKV_DOCKER_2: HEALTHCHECK not required - Health checks are implemented downstream of this image
 
-FROM public.ecr.aws/ubuntu/ubuntu:26.04@sha256:a6bfcecd9b44b97e02f4605b9b47a25bc575cad89fb05c06b257ed3fa96f3c96
+FROM public.ecr.aws/ubuntu/ubuntu:26.04@sha256:b994b083afbc80cb1a4c5a89f8103538d7e1ee046b63bb852018d191f54b10c3
 
 LABEL org.opencontainers.image.vendor="Ministry of Justice" \
       org.opencontainers.image.authors="Analytical Platform (analytical-platform@digital.justice.gov.uk)" \
