@@ -43,6 +43,7 @@ apt-get install --yes \
   "libc6=2.43-2ubuntu2.3" \
   "libc-bin=2.43-2ubuntu2.3" \
   "libc-gconv-modules-extra=2.43-2ubuntu2.3" \
+  "perl-base=5.40.1-7ubuntu0.3" \
   "libssl3t64=3.5.5-1ubuntu3.5" \
   "openssl-provider-legacy=3.5.5-1ubuntu3.5"
 apt-get clean --yes
