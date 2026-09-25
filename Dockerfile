@@ -34,15 +34,15 @@ RUN <<EOF
 apt-get update --yes
 
 apt-get install --yes \
-  "curl=8.18.0-1ubuntu2.3" \
-  "gpgv=2.4.8-4ubuntu3" \
+  "curl=8.18.0-1ubuntu2.7" \
+  "gpgv=2.4.8-4ubuntu3.1" \
   "gzip=1.14-1~exp2ubuntu1.1" \
   "iputils-ping=3:20250605-1ubuntu1" \
   "netcat-openbsd=1.234-1" \
   "traceroute=1:2.1.6-1build1" \
-  "libc6=2.43-2ubuntu2.3" \
-  "libc-bin=2.43-2ubuntu2.3" \
-  "libc-gconv-modules-extra=2.43-2ubuntu2.3"
+  "libc6=2.43-2ubuntu2.4" \
+  "libc-bin=2.43-2ubuntu2.4" \
+  "libc-gconv-modules-extra=2.43-2ubuntu2.4"
 apt-get clean --yes
 EOF
 
