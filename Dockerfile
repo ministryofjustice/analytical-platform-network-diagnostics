@@ -34,7 +34,7 @@ RUN <<EOF
 apt-get update --yes
 
 apt-get install --yes \
-  "curl=8.18.0-1ubuntu2.5" \
+  "curl=8.18.0-1ubuntu2.7" \
   "gpgv=2.4.8-4ubuntu3.1" \
   "gzip=1.14-1~exp2ubuntu1.1" \
   "iputils-ping=3:20250605-1ubuntu1" \

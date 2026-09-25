@@ -33,10 +33,11 @@ Do not assume a specific Ubuntu version or package set. Always read the current 
 
 ## Execution Steps
 
-1. Create a maintenance branch.
+1. Synchronise with the latest `main` before creating the maintenance branch or editing the `Dockerfile`. The timestamped branch name is expected to be unique; create it as a new branch from `origin/main`.
 
 ```bash
-git checkout -b "chore/maintenance-dockerfile-$(date +%Y%m%d-%H%M%S)"
+git fetch origin main
+git checkout -b "chore/maintenance-dockerfile-$(date +%Y%m%d-%H%M%S)" origin/main
 ```
 
 2. Update the base image digest.
@@ -71,9 +72,18 @@ docker run --rm --platform linux/amd64 "$IMAGE" \
 
 4. Confirm the `Dockerfile` still lists the same packages and the same image and tag as before (only digest and versions should differ).
 
-5. Commit the change to `Dockerfile` using [Conventional Commits](https://www.conventionalcommits.org/) (`build` type).
+5. Before committing, fetch the latest `main` again and rebase the maintenance branch so that changes merged while the update was in progress are incorporated.
 
-6. Push the branch and open the pull request with the GitHub CLI.
+```bash
+git fetch origin main
+git rebase origin/main
+```
+
+If the rebase reports a conflict in `Dockerfile`, resolve it by preserving the latest `main` package set and image/tag while applying the maintenance updates. Verify that no conflict markers remain and that all packages remain pinned before continuing.
+
+6. Commit the change to `Dockerfile` using [Conventional Commits](https://www.conventionalcommits.org/) (`build` type).
+
+7. Push the branch and open the pull request with the GitHub CLI.
 
 - The `git commit`, `git push`, and `gh` steps need the local Git/GitHub credentials and network access. When the terminal is sandboxed these are hidden, so run these steps with the required access (outside the sandbox) rather than stopping. A sandboxed `gh auth status` may report "not logged in" even when the terminal is authenticated; do not treat that as a blocker.
 - Set an explicit PR title: a [Conventional Commits](https://www.conventionalcommits.org/) `build:` summary that matches the commit (for example, `build: update base image digest and apt package versions`). Do not use `gh pr create --fill`, which derives the title from the branch name.
@@ -121,5 +131,6 @@ Building and testing the image is handled by CI/CD, so it is not part of this ru
 - Keep platform assumption aligned to `linux/amd64`.
 - Do not add or remove packages. Update exactly the packages already pinned in the `Dockerfile`.
 - Keep all package installs pinned to explicit versions.
+- Start from the latest `origin/main` and rebase onto it again immediately before committing.
 - Deliver both updates in the same branch and pull request.
 - Use [Conventional Commits](https://www.conventionalcommits.org/) for both the commit message and the PR title (use the `build` type).
