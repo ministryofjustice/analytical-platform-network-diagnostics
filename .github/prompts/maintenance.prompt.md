@@ -40,8 +40,6 @@ git fetch origin main
 git checkout -b "chore/maintenance-dockerfile-$(date +%Y%m%d-%H%M%S)" origin/main
 ```
 
-Do not reuse an existing branch or add a fallback for an existing maintenance branch. If branch creation fails because the generated name already exists, stop and report the collision rather than checking out or modifying that branch.
-
 2. Update the base image digest.
 
 - Read the base image reference (`<image>:<tag>`) from the `FROM` line in `Dockerfile`. Use whatever image and tag are currently pinned; do not assume a specific Ubuntu version.
