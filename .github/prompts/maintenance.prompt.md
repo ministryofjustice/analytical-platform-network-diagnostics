@@ -33,21 +33,14 @@ Do not assume a specific Ubuntu version or package set. Always read the current 
 
 ## Execution Steps
 
-1. Synchronise with the latest `main` before creating the maintenance branch or editing the `Dockerfile`.
+1. Synchronise with the latest `main` before creating the maintenance branch or editing the `Dockerfile`. The timestamped branch name is expected to be unique; create it as a new branch from `origin/main`.
 
 ```bash
 git fetch origin main
 git checkout -b "chore/maintenance-dockerfile-$(date +%Y%m%d-%H%M%S)" origin/main
 ```
 
-If the maintenance branch already exists, update it from the latest `main` before continuing:
-
-```bash
-git fetch origin main
-git rebase origin/main
-```
-
-Do not edit the `Dockerfile` until the branch is based on the latest `origin/main`.
+Do not reuse an existing branch or add a fallback for an existing maintenance branch. If branch creation fails because the generated name already exists, stop and report the collision rather than checking out or modifying that branch.
 
 2. Update the base image digest.
 
