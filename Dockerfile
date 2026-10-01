@@ -1,6 +1,6 @@
 #checkov:skip=CKV_DOCKER_2: HEALTHCHECK not required - Health checks are implemented downstream of this image
 
-FROM public.ecr.aws/ubuntu/ubuntu:26.04@sha256:a8724cce691d74a71c42574d3c7e4ef59977b4c48f274cd8bc075e53339bae82
+FROM public.ecr.aws/ubuntu/ubuntu:26.04@sha256:cd11a24d38f395f018457869ea3dab0c21546450787e63d60b52e680de159bb7
 
 LABEL org.opencontainers.image.vendor="Ministry of Justice" \
       org.opencontainers.image.authors="Analytical Platform (analytical-platform@digital.justice.gov.uk)" \
@@ -44,8 +44,8 @@ apt-get install --yes \
   "libc-bin=2.43-2ubuntu2.4" \
   "libc-gconv-modules-extra=2.43-2ubuntu2.4" \
   "perl-base=5.40.1-7ubuntu0.3" \
-  "libssl3t64=3.5.5-1ubuntu3.5" \
-  "openssl-provider-legacy=3.5.5-1ubuntu3.5"
+  "libssl3t64=3.5.5-1ubuntu3.6" \
+  "openssl-provider-legacy=3.5.5-1ubuntu3.6"
 apt-get clean --yes
 EOF
 
