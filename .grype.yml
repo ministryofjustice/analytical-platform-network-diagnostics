@@ -126,3 +126,40 @@ ignore:
       name: stdlib
       location: /usr/bin/pebble
     reason: "Upstream Pebble in pinned Ubuntu base image."
+
+  # OpenSSL in base image, fixed by pinning 3.5.5-1ubuntu3.6 in Dockerfile
+  - vulnerability: CVE-2026-72897
+    package:
+      name: libssl3t64
+      version: 3.5.5-1ubuntu3.5
+    reason: "Fixed in Dockerfile by pinning libssl3t64=3.5.5-1ubuntu3.6."
+
+  - vulnerability: CVE-2026-72897
+    package:
+      name: openssl-provider-legacy
+      version: 3.5.5-1ubuntu3.5
+    reason: "Fixed in Dockerfile by pinning openssl-provider-legacy=3.5.5-1ubuntu3.6."
+
+  - vulnerability: CVE-2026-84782
+    package:
+      name: libssl3t64
+      version: 3.5.5-1ubuntu3.5
+    reason: "Fixed in Dockerfile by pinning libssl3t64=3.5.5-1ubuntu3.6."
+
+  - vulnerability: CVE-2026-84782
+    package:
+      name: openssl-provider-legacy
+      version: 3.5.5-1ubuntu3.5
+    reason: "Fixed in Dockerfile by pinning openssl-provider-legacy=3.5.5-1ubuntu3.6."
+
+  - vulnerability: CVE-2026-84784
+    package:
+      name: libssl3t64
+      version: 3.5.5-1ubuntu3.5
+    reason: "Fixed in Dockerfile by pinning libssl3t64=3.5.5-1ubuntu3.6."
+
+  - vulnerability: CVE-2026-84784
+    package:
+      name: openssl-provider-legacy
+      version: 3.5.5-1ubuntu3.5
+    reason: "Fixed in Dockerfile by pinning openssl-provider-legacy=3.5.5-1ubuntu3.6."
