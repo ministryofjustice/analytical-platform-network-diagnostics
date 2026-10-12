@@ -163,3 +163,58 @@ ignore:
       name: openssl-provider-legacy
       version: 3.5.5-1ubuntu3.5
     reason: "Fixed in Dockerfile by pinning openssl-provider-legacy=3.5.5-1ubuntu3.6."
+
+  # GO-2026-66xx Go stdlib round (fixed in go1.26.9); pebble built with go1.26.7.
+  # Critical
+  - vulnerability: GO-2026-6604
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+  - vulnerability: GO-2026-6612
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+
+  # High
+  - vulnerability: GO-2026-6603
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+  - vulnerability: GO-2026-6605
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+  - vulnerability: GO-2026-6607
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+  - vulnerability: GO-2026-6608
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+  - vulnerability: GO-2026-6609
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+  - vulnerability: GO-2026-6610
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+  - vulnerability: GO-2026-6611
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+  - vulnerability: GO-2026-6613
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
