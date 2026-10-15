@@ -218,3 +218,53 @@ ignore:
       name: stdlib
       location: /usr/bin/pebble
     reason: "Upstream Pebble in pinned Ubuntu base image."
+
+  # Go stdlib round reported against pebble built with go1.27.1 (base image update).
+  # Critical
+  - vulnerability: CVE-2026-78663
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+
+  # High
+  - vulnerability: CVE-2026-78659
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+  - vulnerability: CVE-2026-78660
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+  - vulnerability: CVE-2026-78667
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+  - vulnerability: CVE-2026-78669
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+  - vulnerability: CVE-2026-94439
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+  - vulnerability: CVE-2026-94440
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+  - vulnerability: CVE-2026-97031
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+  - vulnerability: CVE-2026-56866
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
