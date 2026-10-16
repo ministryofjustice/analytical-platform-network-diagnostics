@@ -268,3 +268,24 @@ ignore:
       name: stdlib
       location: /usr/bin/pebble
     reason: "Upstream Pebble in pinned Ubuntu base image."
+
+  - vulnerability: CVE-2026-97032
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+  - vulnerability: GO-2026-6617
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+  - vulnerability: CVE-2026-94444
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
+  - vulnerability: CVE-2026-94447
+    package:
+      name: stdlib
+      location: /usr/bin/pebble
+    reason: "Upstream Pebble in pinned Ubuntu base image."
