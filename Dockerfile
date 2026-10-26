@@ -46,7 +46,7 @@ apt-get install --yes \
   "perl-base=5.40.1-7ubuntu0.3" \
   "libssl3t64=3.5.5-1ubuntu3.7" \
   "openssl-provider-legacy=3.5.5-1ubuntu3.7" \
-  "zlib1g=1:1.3.dfsg+really1.3.1-1ubuntu3.1"
+  "zlib1g=1:1.3.dfsg+really1.3.1-1ubuntu3.2"
 apt-get clean --yes
 EOF
 
