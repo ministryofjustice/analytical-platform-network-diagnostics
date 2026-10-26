@@ -34,7 +34,7 @@ RUN <<EOF
 apt-get update --yes
 
 apt-get install --yes \
-  "curl=8.18.0-1ubuntu2.7" \
+  "curl=8.18.0-1ubuntu2.8" \
   "gpgv=2.4.8-4ubuntu3.1" \
   "gzip=1.14-1~exp2ubuntu1.1" \
   "iputils-ping=3:20250605-1ubuntu1" \
@@ -45,7 +45,8 @@ apt-get install --yes \
   "libc-gconv-modules-extra=2.43-2ubuntu2.4" \
   "perl-base=5.40.1-7ubuntu0.3" \
   "libssl3t64=3.5.5-1ubuntu3.7" \
-  "openssl-provider-legacy=3.5.5-1ubuntu3.7"
+  "openssl-provider-legacy=3.5.5-1ubuntu3.7" \
+  "zlib1g=1:1.3.dfsg+really1.3.1-1ubuntu3.2"
 apt-get clean --yes
 EOF
 
