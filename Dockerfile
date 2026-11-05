@@ -42,6 +42,7 @@ apt-get install --yes \
   "traceroute=1:2.1.6-1build1" \
   "libc6=2.43-2ubuntu2.4" \
   "libc-bin=2.43-2ubuntu2.4" \
+  "libpcre2-8-0=10.42-4ubuntu2.2" \
   "libc-gconv-modules-extra=2.43-2ubuntu2.4" \
   "perl-base=5.40.1-7ubuntu0.3" \
   "libssl3t64=3.5.5-1ubuntu3.7" \
