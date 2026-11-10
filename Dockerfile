@@ -1,6 +1,6 @@
 #checkov:skip=CKV_DOCKER_2: HEALTHCHECK not required - Health checks are implemented downstream of this image
 
-FROM public.ecr.aws/ubuntu/ubuntu:26.04@sha256:cd11a24d38f395f018457869ea3dab0c21546450787e63d60b52e680de159bb7
+FROM docker.io/library/ubuntu:26.04@sha256:6a06111c3b0a8600feadb270aec771dc239bf407b25625f93f44ab00e11f4d3c
 
 LABEL org.opencontainers.image.vendor="Ministry of Justice" \
       org.opencontainers.image.authors="Analytical Platform (analytical-platform@digital.justice.gov.uk)" \
@@ -34,7 +34,9 @@ RUN <<EOF
 apt-get update --yes
 
 apt-get install --yes \
-  "curl=8.18.0-1ubuntu2.7" \
+  "apt=3.2.1ubuntu0.1" \
+  "libapt-pkg7.0=3.2.1ubuntu0.1" \
+  "curl=8.18.0-1ubuntu2.8" \
   "gpgv=2.4.8-4ubuntu3.1" \
   "gzip=1.14-1~exp2ubuntu1.1" \
   "iputils-ping=3:20250605-1ubuntu1" \
@@ -43,9 +45,11 @@ apt-get install --yes \
   "libc6=2.43-2ubuntu2.4" \
   "libc-bin=2.43-2ubuntu2.4" \
   "libc-gconv-modules-extra=2.43-2ubuntu2.4" \
-  "perl-base=5.40.1-7ubuntu0.3" \
-  "libssl3t64=3.5.5-1ubuntu3.6" \
-  "openssl-provider-legacy=3.5.5-1ubuntu3.6"
+  "libpcre2-8-0=10.46-1ubuntu0.1" \
+  "perl-base=5.40.1-7ubuntu0.4" \
+  "libssl3t64=3.5.5-1ubuntu3.7" \
+  "openssl-provider-legacy=3.5.5-1ubuntu3.7" \
+  "zlib1g=1:1.3.dfsg+really1.3.1-1ubuntu3.2"
 apt-get clean --yes
 EOF
 
