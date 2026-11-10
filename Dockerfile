@@ -46,7 +46,7 @@ apt-get install --yes \
   "libc-bin=2.43-2ubuntu2.4" \
   "libc-gconv-modules-extra=2.43-2ubuntu2.4" \
   "libpcre2-8-0=10.46-1ubuntu0.1" \
-  "perl-base=5.40.1-7ubuntu0.3" \
+  "perl-base=5.40.1-7ubuntu0.4" \
   "libssl3t64=3.5.5-1ubuntu3.7" \
   "openssl-provider-legacy=3.5.5-1ubuntu3.7" \
   "zlib1g=1:1.3.dfsg+really1.3.1-1ubuntu3.2"
