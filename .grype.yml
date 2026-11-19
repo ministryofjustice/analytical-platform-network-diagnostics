@@ -1,12 +1,35 @@
 ---
 # Grype configuration for container vulnerability scanning.
-# These vulnerabilities are reported from /usr/bin/pebble bundled in the
-# upstream Ubuntu base image and are not directly patchable in this repository.
 
-ignore: 
-  # OpenSSL in base image, fixed by pinning 3.5.5-1ubuntu3.6 in Dockerfile
-  - vulnerability: CVE-2026-72897
-    package:
-      name: libssl3t64
-      version: 3.5.5-1ubuntu3.5
-    reason: "Fixed in Dockerfile by pinning libssl3t64=3.5.5-1ubuntu3.6."
+ignore:
+  # Go stdlib CVEs in /usr/bin/pebble, which is bundled in the upstream
+  # Ubuntu base image. It can't be patched here: remove these entries once
+  # a base image ships Pebble built with a fixed Go toolchain.
+  - vulnerability: CVE-2026-97033
+    package: &pebble
+      name: stdlib
+      version: go1.27.3
+      type: go-module
+      location: /usr/bin/pebble
+    reason: "Go stdlib in upstream-bundled Pebble; awaiting base image rebuild."
+  - vulnerability: CVE-2026-97034
+    package: *pebble
+    reason: "Go stdlib in upstream-bundled Pebble; awaiting base image rebuild."
+  - vulnerability: CVE-2026-97035
+    package: *pebble
+    reason: "Go stdlib in upstream-bundled Pebble; awaiting base image rebuild."
+  - vulnerability: CVE-2026-97036
+    package: *pebble
+    reason: "Go stdlib in upstream-bundled Pebble; awaiting base image rebuild."
+  - vulnerability: CVE-2026-97037
+    package: *pebble
+    reason: "Go stdlib in upstream-bundled Pebble; awaiting base image rebuild."
+  - vulnerability: CVE-2026-97038
+    package: *pebble
+    reason: "Go stdlib in upstream-bundled Pebble; awaiting base image rebuild."
+  - vulnerability: CVE-2026-97039
+    package: *pebble
+    reason: "Go stdlib in upstream-bundled Pebble; awaiting base image rebuild."
+  - vulnerability: CVE-2026-97043
+    package: *pebble
+    reason: "Go stdlib in upstream-bundled Pebble; awaiting base image rebuild."
